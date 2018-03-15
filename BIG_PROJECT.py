@@ -36,14 +36,23 @@ def show_map(coord=None, spn=None, map_type="map", add_params=None):
         print("Ошибка записи временного файла:", ex)
         sys.exit(2)
 
-show_map(coords, scale, 'map')
-current_picture = pygame.image.load('map.png')
-current_picture = pygame.transform.scale(current_picture, (750, 750))
 while running:
+    show_map(coords, scale, 'map')
+    current_picture = pygame.image.load('map.png')
+    current_picture = pygame.transform.scale(current_picture, (750, 750))
     screen.fill((255, 255, 255))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == 274:
+                coords = (coords[0], coords[1] - scale)
+            if event.key == 273:
+                coords = (coords[0], coords[1] + scale)
+            if event.key == 276:
+                coords = (coords[0] - scale, coords[1])
+            if event.key == 275:
+                coords = (coords[0] + scale, coords[1])
     screen.blit(current_picture, (0, 0))
     pygame.display.flip()
 pygame.quit()
