@@ -56,3 +56,4 @@ while running:
     screen.blit(current_picture, (0, 0))
     pygame.display.flip()
 pygame.quit()
+#sdgjks;dg
