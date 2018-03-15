@@ -54,11 +54,13 @@ while running:
             if event.key == 275:
                 coords = (coords[0] + scale, coords[1])
             if event.key == pygame.K_PAGEUP:
-                scale = scale*1.5
+                scale += 0.5
                 if scale > 17:
                     scale = 17
             if event.key == pygame.K_PAGEDOWN:
-                scale = scale/1.5
+                scale -= 0.5
+                if scale < 0:
+                    scale = 0
 
     screen.blit(current_picture, (0, 0))
     pygame.display.flip()
