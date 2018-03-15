@@ -17,8 +17,8 @@ def show_map(coord=None, spn=None, map_type="map", add_params=None):
     else:
         map_request = "http://static-maps.yandex.ru/1.x/?l={map_type}".format(**locals())
 
-    # if add_params:
-    #     map_request += "&" + add_params
+    if add_params:
+        map_request += "&" + add_params
     response = requests.get(map_request)
 
     if not response:
