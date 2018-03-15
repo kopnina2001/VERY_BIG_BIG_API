@@ -2,14 +2,16 @@ import pygame
 import requests
 import sys
 import os
+coords = [float(x) for x in input().split()]
+scale = float(input())
 pygame.init()
 size = 750, 750
 screen = pygame.display.set_mode(size)
 screen.fill((255, 255, 255))
 pygame.display.flip()
 running = True
-coords = (11.13414, 042.235235)
-scale = float(0.1223)
+# coords = (11.13414, 042.235235)
+# scale = float(0.1223)
 
 def show_map(coord=None, spn=None, map_type="map", add_params=None):
     if coord and spn:
@@ -17,8 +19,8 @@ def show_map(coord=None, spn=None, map_type="map", add_params=None):
     else:
         map_request = "http://static-maps.yandex.ru/1.x/?l={map_type}".format(**locals())
 
-    if add_params:
-        map_request += "&" + add_params
+    # if add_params:
+    #     map_request += "&" + add_params
     response = requests.get(map_request)
 
     if not response:
