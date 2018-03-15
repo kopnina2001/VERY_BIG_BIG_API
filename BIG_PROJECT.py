@@ -10,6 +10,7 @@ screen = pygame.display.set_mode(size)
 screen.fill((255, 255, 255))
 pygame.display.flip()
 running = True
+
 # coords = (11.13414, 042.235235)
 # scale = float(0.1223)
 
@@ -46,13 +47,13 @@ while running:
             running = False
         if event.type == pygame.KEYDOWN:
             if event.key == 274:
-                coords = (coords[0], coords[1] - scale)
+                coords = (coords[0], max(coords[1] - scale, -180))
             if event.key == 273:
-                coords = (coords[0], coords[1] + scale)
+                coords = (coords[0], min(coords[1] + scale, 180))
             if event.key == 276:
-                coords = (coords[0] - scale, coords[1])
+                coords = (max(coords[0] - scale, -90), coords[1])
             if event.key == 275:
-                coords = (coords[0] + scale, coords[1])
+                coords = (min(coords[0] + scale, 90), coords[1])
     screen.blit(current_picture, (0, 0))
     pygame.display.flip()
 pygame.quit()
